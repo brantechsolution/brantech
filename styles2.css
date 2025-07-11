@@ -1,0 +1,218 @@
+/* === BranTech Premium Theme === */
+:root {
+  --brantech-blue: #1f3a93;
+  --brantech-green: #47a447;
+  --brantech-light: #f0f9ff;
+  --form-border: #e2e8f0;
+  --footer-dark: #111827;
+  --gradient-glow: linear-gradient(90deg, #1f3a93, #47a447);
+  --link-color: #4b5563;
+  --card-bg-light: rgba(255, 255, 255, 0.1); /* For glassmorphism base */
+  --card-border-light: rgba(255, 255, 255, 0.2); /* For glassmorphism border */
+  --icon-color-primary: #fff; /* Explicit icon color */
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;; /* Changed font to Poppins for a modern look */
+  scroll-behavior: smooth;
+  background-color: #fff;
+  color: #2d3748;
+  line-height: 1.6;
+}
+
+/* Navbar */
+nav {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid #e5e7eb;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+nav a {
+  font-weight: 500;
+  color: var(--link-color);
+  position: relative;
+  transition: all 0.3s ease;
+}
+nav a:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--brantech-green);
+}
+
+/* Hero Section Enhancements */
+.hero-gradient {
+  background: linear-gradient(135deg, var(--brantech-blue) 0%, var(--brantech-green) 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  /* Adjusting for bigger text-shadow */
+  text-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+}
+.hero-gradient::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: -50px;
+  right: -50px;
+  background: radial-gradient(circle, #ffffff22, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+/* Hero Floating Shapes */
+.hero-shape {
+  position: absolute;
+  opacity: 0.1;
+  filter: blur(8px);
+  z-index: 0;
+}
+.hero-shape.shape-1 { top: 15%; left: 10%; animation-delay: 0s; }
+.hero-shape.shape-2 { bottom: 20%; right: 15%; animation-delay: 2s; }
+.hero-shape.shape-3 { top: 5%; right: 30%; animation-delay: 4s; }
+
+@keyframes float-pulse {
+  0% { transform: translateY(0px) scale(1); opacity: 0.1; }
+  50% { transform: translateY(-15px) scale(1.05); opacity: 0.15; }
+  100% { transform: translateY(0px) scale(1); opacity: 0.1; }
+}
+.animate-float-pulse-1 { animation: float-pulse 8s infinite ease-in-out; }
+.animate-float-pulse-2 { animation: float-pulse 10s infinite ease-in-out; }
+.animate-float-pulse-3 { animation: float-pulse 7s infinite ease-in-out; }
+
+
+/* Service Cards - FANCY EDITION (service-card-fancy) */
+.service-card-fancy {
+  border-radius: 1.5rem;
+  transition: all 0.5s ease; /* Smoother transitions */
+  background: rgba(255, 255, 255, 0.15); /* Semi-transparent white background */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); /* Subtle initial shadow for depth */
+  border: 1px solid var(--card-border-light); /* Light, semi-transparent border */
+  display: flex; /* Ensure flex properties for alignment */
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center align content */
+  justify-content: space-between; /* Space out content nicely */
+  padding: 2.5rem; /* More generous padding */
+  text-align: center;
+}
+
+.service-card-fancy:hover {
+  transform: translateY(-15px) scale(1.02); /* More pronounced lift and slight scale */
+  box-shadow: 0 20px 60px 0 rgba(31, 38, 135, 0.25); /* Stronger shadow on hover */
+  border-color: var(--brantech-green); /* Border color transition */
+  background: rgba(255, 255, 255, 0.25); /* Slightly less transparent on hover */
+}
+
+/* Icon Wrapper inside fancy cards */
+.service-card-fancy .icon-wrapper {
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* Bouncier transition */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for icons */
+  /* Animation for icons to float subtly */
+  animation: floating-icon 3s ease-in-out infinite;
+}
+
+/* Explicitly color the SVG icons */
+.service-card-fancy .icon-wrapper svg {
+  stroke: var(--icon-color-primary); /* Sets the color of the icon outline */
+  /* If any icon uses fill, you can set it here too, e.g., fill: var(--icon-color-primary); */
+}
+
+
+.service-card-fancy:hover .icon-wrapper {
+  animation: none; /* Stop floating animation on hover */
+}
+
+@keyframes floating-icon {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+
+/* New Blob Animations for background */
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  33% { transform: translate(30px, -50px) scale(1.1); border-radius: 70% 30% 70% 30% / 30% 70% 30% 70%; }
+  66% { transform: translate(-20px, 20px) scale(0.9); border-radius: 40% 60% 60% 40% / 60% 60% 40% 40%; }
+  100% { transform: translate(0px, 0px) scale(1); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+.animate-blob {
+  animation: blob 10s infinite cubic-bezier(0.6, 0.01, 0.35, 1); /* Slower, smoother blob */
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Contact Form */
+form {
+  background: var(--brantech-light);
+  border: 1px solid var(--form-border);
+  transition: all 0.3s ease;
+  border-radius: 1rem;
+}
+form:hover {
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.05);
+}
+form input,
+form textarea {
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: white;
+}
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--brantech-green);
+  box-shadow: 0 0 0 4px rgba(71, 164, 71, 0.15);
+}
+button[type="submit"] {
+  background: var(--brantech-blue);
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+button[type="submit"]:hover {
+  background-color: #17459d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(31, 58, 147, 0.2);
+}
+
+/* CTA */
+.cta-box {
+  border-radius: 1.5rem;
+  background: var(--gradient-glow);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.cta-box:hover {
+  transform: scale(1.02);
+}
+
+/* Footer */
+footer {
+  background-color: var(--footer-dark);
+  color: #d1d5db;
+  padding-top: 3rem;
+}
+footer a {
+  color: #9ca3af;
+  transition: color 0.3s ease;
+}
+footer a:hover {
+  color: white;
+}
+footer .footer-gradient-border {
+  height: 4px;
+  background: var(--gradient-glow);
+  margin-bottom: 2rem;
+  border-radius: 2px;
+}
+
+/* Section anchor offset */
+section {
+  scroll-margin-top: 80px;
+}

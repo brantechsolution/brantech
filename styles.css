@@ -1,0 +1,158 @@
+/* === BranTech Premium Theme === */
+:root {
+  --brantech-blue: #1f3a93;
+  --brantech-green: #47a447;
+  --brantech-light: #f0f9ff;
+  --form-border: #e2e8f0;
+  --footer-dark: #111827;
+  --gradient-glow: linear-gradient(90deg, #1f3a93, #47a447);
+  --link-color: #4b5563;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  scroll-behavior: smooth;
+  background-color: #fff;
+  color: #2d3748;
+  line-height: 1.6;
+}
+
+/* Navbar */
+nav {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid #e5e7eb;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+nav a {
+  font-weight: 500;
+  color: var(--link-color);
+  position: relative;
+  transition: all 0.3s ease;
+}
+nav a:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--brantech-green);
+}
+
+/* Hero */
+.hero-gradient {
+  background: linear-gradient(135deg, var(--brantech-blue) 0%, var(--brantech-green) 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.hero-gradient::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: -50px;
+  right: -50px;
+  background: radial-gradient(circle, #ffffff22, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+/* Service Cards */
+.service-card {
+  border-radius: 1.5rem;
+  transition: all 0.4s ease;
+  border: 1px solid #e5e7eb;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+  border-color: var(--brantech-green);
+}
+.service-card svg {
+  transition: transform 0.4s ease;
+}
+.service-card:hover svg {
+  transform: scale(1.2);
+}
+
+/* Floating Image */
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Contact Form */
+form {
+  background: var(--brantech-light);
+  border: 1px solid var(--form-border);
+  transition: all 0.3s ease;
+  border-radius: 1rem;
+}
+form:hover {
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.05);
+}
+form input,
+form textarea {
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: white;
+}
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--brantech-green);
+  box-shadow: 0 0 0 4px rgba(71, 164, 71, 0.15);
+}
+button[type="submit"] {
+  background: var(--brantech-blue);
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+button[type="submit"]:hover {
+  background-color: #17459d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(31, 58, 147, 0.2);
+}
+
+/* CTA */
+.cta-box {
+  border-radius: 1.5rem;
+  background: var(--gradient-glow);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.cta-box:hover {
+  transform: scale(1.02);
+}
+
+/* Footer */
+footer {
+  background-color: var(--footer-dark);
+  color: #d1d5db;
+  padding-top: 3rem;
+}
+footer a {
+  color: #9ca3af;
+  transition: color 0.3s ease;
+}
+footer a:hover {
+  color: white;
+}
+footer .footer-gradient-border {
+  height: 4px;
+  background: var(--gradient-glow);
+  margin-bottom: 2rem;
+  border-radius: 2px;
+}
+
+/* Section anchor offset */
+section {
+  scroll-margin-top: 80px;
+}
