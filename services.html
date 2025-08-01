@@ -29,7 +29,25 @@
   </script>
 </head>
 <body class="bg-gray-50 text-gray-800 overflow-x-visible font-poppins">
-  <div id="navbar"></div>
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <img src="images/Brantech_Business_Plan-removebg-preview.png" alt="Logo" class="h-10 w-10 rounded-full border-2 border-[color:var(--brantech-blue)]" />
+        <span class="text-xl font-bold bg-gradient-to-r from-[color:var(--brantech-blue)] to-[color:var(--brantech-green)] bg-clip-text text-transparent">BranTech</span>
+      </div>
+      <div class="hidden md:flex space-x-8">
+        <a href="index.html" class="font-medium text-[color:var(--brantech-blue)] hover:text-[color:var(--brantech-green)] transition">Home</a>
+        <a href="about.html" class="font-medium text-gray-600 hover:text-[color:var(--brantech-green)] transition">About</a>
+        <a href="services.html" class="font-medium text-gray-600 hover:text-[color:var(--brantech-green)] transition">Services</a>
+        <a href="contacts.html" class="font-medium text-gray-600 hover:text-[color:var(--brantech-green)] transition">Contact</a>
+      </div>
+      <button class="md:hidden focus:outline-none">
+        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
 
   <section class="hero-gradient pt-24 pb-8 px-6 relative overflow-x-hidden">
     <div class="hero-shape shape-1 w-24 h-24 bg-white opacity-10 rounded-full animate-float-pulse-1"></div>
@@ -37,7 +55,7 @@
     <div class="hero-shape shape-3 w-20 h-20 bg-white opacity-10 rounded-full animate-float-pulse-3"></div>
 
     <div class="max-w-7xl mx-auto relative z-10 text-center lg:text-left">
-      <div class="animate__animated animate__fadeInLeft animate__slow">
+      <div class="animate__animated animate__fadeInLeft">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">Our <span class="text-brantech-yellow">Services</span></h1>
         <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto lg:mx-0">Comprehensive technology solutions, meticulously crafted to elevate your business and exceed expectations.</p>
         <a href="#services" class="inline-block bg-yellow-300 text-brantech-blue px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-xl">Explore Our Solutions</a>

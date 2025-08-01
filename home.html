@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BranTech Solutions - Innovative Technology Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="styles2.css">
+  <style>
+    :root {
+      --brantech-blue: #1f3a93;
+      --brantech-green: #47a447;
+    }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      scroll-behavior: smooth;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, var(--brantech-blue) 0%, var(--brantech-green) 100%);
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    @keyframes slide {
+      0%, 33% { transform: translateX(0); }
+      34%, 66% { transform: translateX(-33.333%); }
+      67%, 100% { transform: translateX(-66.666%); }
+    }
+    .animate-slide {
+      animation: slide 12s infinite;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 overflow-x-visible">
+
+  <!-- Hero Section with Navbar Inside -->
+  <section class="relative h-screen flex items-center justify-center text-white overflow-x-visible">
+    
+    <!-- Navigation inside Hero -->
+    <nav class="w-full absolute top-0 left-0 z-10 px-6 py-4">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <img src="images/Brantech_Business_Plan-removebg-preview.png" alt="Logo" class="h-10 w-10 rounded-full border-2 border-white" />
+          <span class="text-xl font-bold bg-gradient-to-r from-[color:var(--brantech-blue)] to-[color:var(--brantech-green)] bg-clip-text text-transparent">BranTech</span>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="index.html" class="font-medium text-white hover:text-[color:var(--brantech-green)] transition">Home</a>
+          <a href="about.html" class="font-medium text-white hover:text-[color:var(--brantech-green)] transition">About</a>
+          <a href="services.html" class="font-medium text-white hover:text-[color:var(--brantech-green)] transition">Services</a>
+          <a href="contacts.html" class="font-medium text-white hover:text-[color:var(--brantech-green)] transition">Contact</a>
+        </div>
+        <button class="md:hidden focus:outline-none">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Background Slider -->
+    <div class="hero-slider absolute inset-0 w-[300%] h-full flex animate-slide">
+      <div class="hero-slide w-1/3 h-full bg-cover bg-center" style="background-image: linear-gradient(135deg, rgba(31, 58, 147, 0.8), rgba(71, 164, 71, 0.8)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+      <div class="hero-slide w-1/3 h-full bg-cover bg-center" style="background-image: linear-gradient(135deg, rgba(31, 58, 147, 0.8), rgba(71, 164, 71, 0.8)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+      <div class="hero-slide w-1/3 h-full bg-cover bg-center" style="background-image: linear-gradient(135deg, rgba(31, 58, 147, 0.8), rgba(71, 164, 71, 0.8)), url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+    </div>
+
+    <!-- Hero Text Content -->
+    <div class="relative z-10 text-center px-6">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">BranTech Solutions</h1>
+      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">We create cutting-edge technology solutions that transform businesses and drive growth in the digital age.</p>
+      <a href="#services" class="bg-white text-[color:var(--brantech-blue)] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg">Explore Our Work</a>
+    </div>
+  </section>
+
+  <!-- Continue with your other sections exactly as they are -->
+  <!-- Clients Section -->
+  <!-- Services Section -->
+  <!-- Stats Section -->
+  <!-- CTA Section -->
+  <!-- Footer -->
+
+  <!-- JavaScript -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    if (tabButtons.length > 0) {
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          tabButtons.forEach(btn => btn.classList.remove('tab-active'));
+          tabContents.forEach(content => content.classList.add('hidden'));
+          button.classList.add('tab-active');
+          const tabId = button.getAttribute('data-tab') + '-tab';
+          document.getElementById(tabId).classList.remove('hidden');
+        });
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('#services .service-card-fancy').forEach(card => {
+      observer.observe(card);
+    });
+
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  });
+  </script>
+
+</body>
+</html>
