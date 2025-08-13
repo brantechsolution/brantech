@@ -3,201 +3,584 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services - BranTech Solutions</title>
+  <title>Premium Services | BranTech Solutions</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <link rel="stylesheet" href="styles2.css"> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'brantech-blue': '#1f3a93',
-            'brantech-green': '#47a447',
-            'brantech-light': '#f0f9ff',
-            'form-border': '#e2e8f0',
-            'footer-dark': '#111827',
-            'link-color': '#4b5563',
-          },
-          fontFamily: {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            scroll-behavior: smooth;
-          }
-        }
+  <link rel="stylesheet" href="styles2.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brantech-blue: #1f3a93;
+      --brantech-green: #47a447;
+      --brantech-light: #f0f7ff;
+    }
+
+    body {
+      padding-top: 100px !important;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    /* Header Styles */
+    nav {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      max-width: 1000px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-radius: 9999px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .logo-container img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+
+    .logo-container span {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #1a202c;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0.625rem 1.25rem;
+      border-radius: 50px;
+      position: relative;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links a:hover {
+      color: var(--brantech-blue);
+      background-color: rgba(31, 58, 147, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .nav-links a.active {
+      color: var(--brantech-blue);
+      background-color: rgba(31, 58, 147, 0.1);
+      font-weight: 700;
+    }
+
+    .mobile-menu-button {
+      display: none;
+      background: none;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 50px;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .mobile-menu-button:hover {
+      background-color: rgba(31, 58, 147, 0.08);
+      transform: scale(1.05);
+    }
+
+    .mobile-menu-button svg {
+      width: 20px;
+      height: 20px;
+      color: #475569;
+    }
+
+    .mobile-menu {
+      position: absolute;
+      top: 72px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 280px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+      border: 1px solid #f1f5f9;
+      padding: 16px;
+      z-index: 1001;
+      display: none;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 4px 0;
+      text-decoration: none;
+      font-weight: 500;
+      color: #64748b;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-menu a:hover {
+      background-color: #f8fafc;
+      color: var(--brantech-blue);
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding-top: 80px !important;
+      }
+      
+      nav {
+        width: 96%;
+        padding: 0 1rem;
+        height: 50px;
+        top: 8px;
+      }
+      
+      .logo-container span {
+        font-size: 0.9rem;
+      }
+      
+      .logo-container img {
+        width: 28px;
+        height: 28px;
       }
     }
-  </script>
+
+    @media (max-width: 768px) {
+      body {
+        padding-top: 90px !important;
+      }
+      
+      nav {
+        width: 94%;
+        padding: 0 1.5rem;
+        height: 55px;
+        top: 10px;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-button {
+        display: block;
+      }
+      
+      .logo-container span {
+        font-size: 1rem;
+      }
+      
+      .logo-container img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      nav {
+        width: 92%;
+      }
+      
+      .nav-links {
+        gap: 1rem;
+      }
+      
+      .nav-links a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .service-card-inner {
+        transform: none !important;
+      }
+      
+      .service-card:hover .service-card-inner {
+        transform: translateY(-5px) !important;
+      }
+    }
+
+    .service-card {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+    }
+    .service-card-inner {
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .service-card:hover .service-card-inner {
+      transform: translateY(-10px) rotateX(5deg);
+    }
+    .service-icon {
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    .service-card:hover .service-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, var(--brantech-blue) 0%, var(--brantech-green) 100%);
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800 overflow-x-visible font-poppins">
-    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-3">
-        <img src="images/Brantech_Business_Plan-removebg-preview.png" alt="Logo" class="h-10 w-10 rounded-full border-2 border-[color:var(--brantech-blue)]" />
+<body class="bg-gray-50 text-gray-800 font-inter overflow-x-hidden" style="padding-top: 100px;">
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo-container">
+        <img src="images/Brantech_Business_Plan-removebg-preview.png" alt="BranTech Logo" class="h-10 w-10 rounded-full border-2 border-[color:var(--brantech-blue)]">
         <span class="text-xl font-bold bg-gradient-to-r from-[color:var(--brantech-blue)] to-[color:var(--brantech-green)] bg-clip-text text-transparent">BranTech</span>
       </div>
-      <div class="hidden md:flex space-x-8">
-        <a href="index.html" class="font-medium text-[color:var(--brantech-blue)] hover:text-[color:var(--brantech-green)] transition">Home</a>
-        <a href="about.html" class="font-medium text-gray-600 hover:text-[color:var(--brantech-green)] transition">About</a>
-        <a href="services.html" class="font-medium text-gray-600 hover:text-[color:var(--brantech-green)] transition">Services</a>
-        <a href="contacts.html" class="font-medium text-gray-600 hover:text-[color:var(--brantech-green)] transition">Contact</a>
+      
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="contacts.html">Contact</a>
       </div>
-      <button class="md:hidden focus:outline-none">
+      
+      <button class="mobile-menu-button md:hidden">
         <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
+    
+    <div class="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contacts.html">Contact</a>
+    </div>
   </nav>
 
-  <section class="hero-gradient pt-24 pb-8 px-6 relative overflow-x-hidden">
-    <div class="hero-shape shape-1 w-24 h-24 bg-white opacity-10 rounded-full animate-float-pulse-1"></div>
-    <div class="hero-shape shape-2 w-32 h-32 bg-white opacity-10 rounded-lg animate-float-pulse-2"></div>
-    <div class="hero-shape shape-3 w-20 h-20 bg-white opacity-10 rounded-full animate-float-pulse-3"></div>
-
-    <div class="max-w-7xl mx-auto relative z-10 text-center lg:text-left">
-      <div class="animate__animated animate__fadeInLeft">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">Our <span class="text-brantech-yellow">Services</span></h1>
-        <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-4xl mx-auto lg:mx-0">Comprehensive technology solutions, meticulously crafted to elevate your business and exceed expectations.</p>
-        <a href="#services" class="inline-block bg-yellow-300 text-brantech-blue px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 transition-all duration-300 ease-in-out transform hover:scale-105 shadow-xl">Explore Our Solutions</a>
-      </div>
-    </div>
-  </section>
-
-  ---
-
-  <section id="services" class="pt-8 md:pt-12 pb-20 md:pb-32 px-6 bg-white relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-brantech-light via-white to-brantech-light opacity-70 -z-10"></div>
-    <div class="absolute top-1/4 left-0 w-40 h-40 bg-brantech-green rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob -z-10"></div>
-    <div class="absolute bottom-1/4 right-0 w-60 h-60 bg-brantech-blue rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000 -z-10"></div>
-
+  <!-- Hero Section with Parallax Effect -->
+  <section class="hero-gradient py-16 sm:py-20 md:py-24 px-4 sm:px-6 text-white relative overflow-hidden min-h-[60vh] sm:min-h-[65vh] md:min-h-[70vh] flex items-center" style="margin-top: 20px;">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center bg-fixed opacity-20"></div>
     <div class="max-w-7xl mx-auto relative z-10">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">Our Core <span class="text-brantech-green">Solutions</span></h2>
-        <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">Discover our premium suite of digital services, meticulously designed to drive growth, efficiency, and innovation for your enterprise.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-
-        <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-blue text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 4l-4 4 4 4" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">Web Design & Development</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Crafting bespoke, high-performance websites with intuitive UX/UI that elevate your brand and drive conversions.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
-            Learn More
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
+      <div class="animate__animated animate__fadeInUp">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-6">Our <span class="text-yellow-300">Signature</span> Services</h1>
+        <p class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 opacity-90 max-w-3xl">
+          Where innovation meets execution - premium solutions tailored to your digital transformation journey.
+        </p>
+        <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center sm:justify-start">
+          <a href="#services" class="bg-white text-[color:var(--brantech-blue)] px-4 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg hover:shadow-xl text-center text-sm sm:text-base">
+            Explore Services
+          </a>
+          <a href="contacts.html" class="border-2 border-white text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-white hover:text-[color:var(--brantech-blue)] transition text-center text-sm sm:text-base">
+            Get Custom Quote
           </a>
         </div>
-
-        <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-green text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">SEO Optimization</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Maximizing your online visibility and organic search rankings to connect you with more customers actively seeking your solutions.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
-            Learn More
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-blue text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">Email Marketing</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Building powerful email campaigns that nurture leads, drive repeat business, and strengthen customer relationships.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
-            Learn More
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-green text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.558 23.558 0 0112 15c-3.185 0-6.279-.64-9-1.745M15 12a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">Brand Strategy</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Crafting compelling brand narratives and visual identities that resonate deeply with your target audience.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
-            Learn More
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-blue text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L20 20m-6-6l2-2m-3-6H9m2 0H7m4 0h-1m4 0h-1m4 0h-1m4 0h-1" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">Graphic Design</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Designing stunning visual assets, from impactful logos to engaging marketing collateral, that leave a lasting impression.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
-            Learn More
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-green text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">Content Creation</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Producing high-quality, engaging content—from captivating articles to dynamic videos—that educates, entertains, and converts.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
-            Learn More
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-blue text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 9v-3a2 2 0 00-2-2H6a2 2 0 00-2 2v3m14 0a2 2 0 012 2v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5a2 2 0 012-2m0 0h12" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">Social Media Advertising</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Strategically targeting audiences on social platforms to boost brand awareness, generate leads, and drive conversions.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
-            Learn More
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <div id="cta"></div>
-  <div id="footer"></div>
+  <!-- Services Grid -->
+  <section id="services" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=10')] bg-cover bg-center opacity-5 -z-10"></div>
+    
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 sm:mb-16 md:mb-20 animate__animated animate__fadeIn">
+        <span class="inline-block px-3 sm:px-4 py-1 bg-[color:var(--brantech-green)]/10 text-[color:var(--brantech-green)] rounded-full mb-3 sm:mb-4 font-medium text-sm sm:text-base">What We Excel At</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">Crafting Digital <span class="text-[color:var(--brantech-blue)]">Excellence</span></h2>
+        <p class="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto px-4 sm:px-0">
+          Each service is meticulously designed to deliver measurable results and exceptional user experiences.
+        </p>
+      </div>
 
-  <script src="components.js"></script>
-  <script src="script.js"></script>
+      <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+        <!-- Web Design & Development -->
+        <div class="service-card group">
+          <div class="service-card-inner h-full bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+            <div class="relative overflow-hidden h-48">
+              <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Web Development" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 p-6">
+                <div class="service-icon bg-[color:var(--brantech-blue)] text-white p-4 rounded-xl shadow-xl inline-flex">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 4l-4 4 4 4" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">Web Design & Development</h3>
+              <p class="text-gray-700 mb-6">
+                Bespoke digital experiences engineered for performance, accessibility, and conversion optimization.
+              </p>
+              <ul class="space-y-2 mb-6 text-gray-600">
+                <li class="flex items-center">
+                  <svg class="w-4 h-4 mr-2 text-[color:var(--brantech-green)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Responsive & mobile-first design
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-4 h-4 mr-2 text-[color:var(--brantech-green)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  E-commerce solutions
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-4 h-4 mr-2 text-[color:var(--brantech-green)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  CMS integration
+                </li>
+              </ul>
+              <a href="#" class="inline-flex items-center text-[color:var(--brantech-blue)] font-semibold hover:text-[color:var(--brantech-green)]">
+                Explore case studies
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+         <!-- Mobile App Development -->
+            <div class="service-card-fancy group">
+                <div class="icon-wrapper p-6 rounded-full bg-[color:var(--brantech-green)] text-white mb-6 shadow-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Mobile App Development</h3>
+                <p class="text-gray-700 mb-4">
+                    Custom mobile applications for iOS and Android that engage users and drive business growth.
+                </p>
+                <a href="services.html#mobile-apps" class="text-[color:var(--brantech-blue)] font-semibold hover:text-[color:var(--brantech-green)] flex items-center group-hover:underline">
+                    Learn More
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Branding & Identity -->
+            <div class="service-card-fancy group">
+                <div class="icon-wrapper p-6 rounded-full bg-[color:var(--brantech-blue)] text-white mb-6 shadow-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Branding & Identity</h3>
+                <p class="text-gray-700 mb-4">
+                    Comprehensive branding solutions including logo design, visual identity, and brand guidelines.
+                </p>
+                <a href="services.html#branding" class="text-[color:var(--brantech-blue)] font-semibold hover:text-[color:var(--brantech-green)] flex items-center group-hover:underline">
+                    Learn More
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        <!-- Brand Strategy -->
+        <div class="service-card group">
+          <div class="service-card-inner h-full bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300">
+            <div class="relative overflow-hidden h-48">
+              <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Brand Strategy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 p-6">
+                <div class="service-icon bg-[color:var(--brantech-blue)] text-white p-4 rounded-xl shadow-xl inline-flex">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.558 23.558 0 0112 15c-3.185 0-6.279-.64-9-1.745M15 12a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-gray-900 mb-3">Brand Strategy</h3>
+              <p class="text-gray-700 mb-6">
+                Transformative branding that creates emotional connections and lasting customer loyalty.
+              </p>
+              <ul class="space-y-2 mb-6 text-gray-600">
+                <li class="flex items-center">
+                  <svg class="w-4 h-4 mr-2 text-[color:var(--brantech-green)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Visual identity systems
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-4 h-4 mr-2 text-[color:var(--brantech-green)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Brand positioning
+                </li>
+                <li class="flex items-center">
+                  <svg class="w-4 h-4 mr-2 text-[color:var(--brantech-green)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  Messaging frameworks
+                </li>
+              </ul>
+              <a href="#" class="inline-flex items-center text-[color:var(--brantech-blue)] font-semibold hover:text-[color:var(--brantech-green)]">
+                View brand portfolio
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-20 px-6 bg-[color:var(--brantech-light)]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1 bg-[color:var(--brantech-blue)]/10 text-[color:var(--brantech-blue)] rounded-full mb-4 font-medium">Our Methodology</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">The BranTech <span class="text-[color:var(--brantech-green)]">Process</span></h2>
+        <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+          A proven framework that delivers exceptional results at every stage of your project.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <div class="w-16 h-16 mx-auto mb-4 bg-[color:var(--brantech-blue)]/10 text-[color:var(--brantech-blue)] rounded-full flex items-center justify-center text-2xl font-bold">1</div>
+          <h3 class="text-xl font-semibold mb-3">Discovery</h3>
+          <p class="text-gray-600">Deep dive into your business objectives and audience needs.</p>
+        </div>
+        <div class="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <div class="w-16 h-16 mx-auto mb-4 bg-[color:var(--brantech-blue)]/10 text-[color:var(--brantech-blue)] rounded-full flex items-center justify-center text-2xl font-bold">2</div>
+          <h3 class="text-xl font-semibold mb-3">Strategy</h3>
+          <p class="text-gray-600">Data-backed planning tailored to your unique position.</p>
+        </div>
+        <div class="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <div class="w-16 h-16 mx-auto mb-4 bg-[color:var(--brantech-blue)]/10 text-[color:var(--brantech-blue)] rounded-full flex items-center justify-center text-2xl font-bold">3</div>
+          <h3 class="text-xl font-semibold mb-3">Execution</h3>
+          <p class="text-gray-600">Precision implementation with agile methodologies.</p>
+        </div>
+        <div class="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow">
+          <div class="w-16 h-16 mx-auto mb-4 bg-[color:var(--brantech-blue)]/10 text-[color:var(--brantech-blue)] rounded-full flex items-center justify-center text-2xl font-bold">4</div>
+          <h3 class="text-xl font-semibold mb-3">Optimization</h3>
+          <p class="text-gray-600">Continuous improvement based on performance metrics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6 bg-white">
+    <div class="max-w-4xl mx-auto bg-[color:var(--brantech-blue)] rounded-2xl p-10 text-center text-white shadow-xl relative overflow-hidden">
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=10')] bg-cover bg-center opacity-10"></div>
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Elevate Your Digital Presence?</h2>
+        <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+          Let's craft a solution that propels your business forward.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="contacts.html" class="bg-white text-[color:var(--brantech-blue)] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg hover:shadow-xl">
+            Schedule Consultation
+          </a>
+          <a href="tel:+254704894220" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-[color:var(--brantech-blue)] transition">
+            Call Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center space-x-3 mb-4">
+          <img src="images/Brantech_Business_Plan-removebg-preview.png" alt="BranTech Logo" class="h-10 w-10 rounded-full">
+          <span class="text-xl font-bold">BranTech</span>
+        </div>
+        <p class="text-gray-400">Pioneering digital transformation through innovative technology solutions.</p>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
+          <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+          <li><a href="services.html" class="text-gray-400 hover:text-white transition">Services</a></li>
+          <li><a href="contacts.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Services</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Web Development</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">SEO Optimization</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Brand Strategy</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Digital Marketing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Contact</h4>
+        <address class="text-gray-400 not-italic">
+          <p>Nairobi, Kenya</p>
+          <p class="mt-2">solutionsbrantech@gmail.com</p>
+          <p>+254 704 894 220</p>
+          <div class="mt-4">
+            <a href="https://www.instagram.com/brantech_solutions" target="_blank" class="inline-flex items-center text-white hover:text-[color:var(--brantech-green)]">
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              @brantech_solutions
+            </a>
+          </div>
+        </address>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto pt-8 mt-8 border-t border-gray-800 text-center text-gray-400">
+      <p>© 2025 BranTech Solutions. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuButton = document.querySelector('.mobile-menu-button');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!mobileMenu.contains(event.target)) {
+          mobileMenu.style.display = 'none';
+        }
+      });
+    });
+  </script>
 </body>
 </html>

@@ -1,118 +1,519 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BranTech Solutions - Innovative Technology Services</title>
+  <meta name="description" content="BranTech Solutions provides cutting-edge technology services including web development, branding, and digital marketing solutions.">
+  <meta name="keywords" content="technology solutions, web design, branding, digital marketing, Kenya">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+  
+  <!-- CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link rel="stylesheet" href="styles2.css">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
+    /* === BranTech Premium Theme === */
     :root {
       --brantech-blue: #1f3a93;
       --brantech-green: #47a447;
+      --brantech-light: #f0f9ff;
+      --form-border: #e2e8f0;
+      --footer-dark: #111827;
+      --gradient-glow: linear-gradient(90deg, #1f3a93, #47a447);
+      --link-color: #4b5563;
+      --card-bg-light: rgba(255, 255, 255, 0.1);
+      --card-border-light: rgba(255, 255, 255, 0.2);
+      --icon-color-primary: #fff;
     }
+
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       scroll-behavior: smooth;
+      background-color: #fff;
+      color: #2d3748;
+      line-height: 1.6;
+      padding-top: 100px;
     }
+
+    /* Header Styles */
+    nav {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      max-width: 1000px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-radius: 9999px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Logo container */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .logo-container img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+    }
+
+    .logo-container span {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #1a202c;
+    }
+
+    /* Navigation links */
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0.625rem 1.25rem;
+      border-radius: 50px;
+      position: relative;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links a:hover {
+      color: var(--brantech-blue);
+      background-color: rgba(31, 58, 147, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .nav-links a.active {
+      color: var(--brantech-blue);
+      background-color: rgba(31, 58, 147, 0.1);
+      font-weight: 700;
+    }
+
+    /* Mobile menu button */
+    .mobile-menu-button {
+      display: none;
+      background: none;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 50px;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .mobile-menu-button:hover {
+      background-color: rgba(31, 58, 147, 0.08);
+      transform: scale(1.05);
+    }
+
+    .mobile-menu-button svg {
+      width: 20px;
+      height: 20px;
+      color: #475569;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      position: absolute;
+      top: 72px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 280px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+      border: 1px solid #f1f5f9;
+      padding: 16px;
+      z-index: 1001;
+      display: none;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 4px 0;
+      text-decoration: none;
+      font-weight: 500;
+      color: #64748b;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-menu a:hover {
+      background-color: #f8fafc;
+      color: var(--brantech-blue);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 88px;
+      }
+      
+      nav {
+        width: 94%;
+        padding: 0 1.5rem;
+        height: 60px;
+        top: 12px;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-button {
+        display: block;
+      }
+      
+      .logo-container span {
+        font-size: 1rem;
+      }
+      
+      .logo-container img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      nav {
+        width: 92%;
+      }
+      
+      .nav-links {
+        gap: 1.25rem;
+      }
+      
+      .nav-links a {
+        padding: 0.5rem 1rem;
+        font-size: 0.8125rem;
+      }
+    }
+
+    /* Hero Section Enhancements */
     .hero-gradient {
       background: linear-gradient(135deg, var(--brantech-blue) 0%, var(--brantech-green) 100%);
+      color: white;
+      position: relative;
+      overflow: hidden;
+      text-shadow: 0px 4px 8px rgba(0,0,0,0.2);
     }
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    .hero-gradient::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      top: -50px;
+      right: -50px;
+      background: radial-gradient(circle, #ffffff22, transparent 70%);
+      border-radius: 50%;
+      filter: blur(40px);
     }
+
+    /* Hero Floating Shapes */
+    .hero-shape {
+      position: absolute;
+      opacity: 0.1;
+      filter: blur(8px);
+      z-index: 0;
+    }
+
+    .hero-shape.shape-1 { top: 15%; left: 10%; animation-delay: 0s; }
+    .hero-shape.shape-2 { bottom: 20%; right: 15%; animation-delay: 2s; }
+    .hero-shape.shape-3 { top: 5%; right: 30%; animation-delay: 4s; }
+
+    @keyframes float-pulse {
+      0% { transform: translateY(0px) scale(1); opacity: 0.1; }
+      50% { transform: translateY(-15px) scale(1.05); opacity: 0.15; }
+      100% { transform: translateY(0px) scale(1); opacity: 0.1; }
+    }
+
+    .animate-float-pulse-1 { animation: float-pulse 8s infinite ease-in-out; }
+    .animate-float-pulse-2 { animation: float-pulse 10s infinite ease-in-out; }
+    .animate-float-pulse-3 { animation: float-pulse 7s infinite ease-in-out; }
+
+    /* Service Cards - FANCY EDITION (service-card-fancy) */
+    .service-card-fancy {
+      border-radius: 1rem;
+      transition: all 0.5s ease;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+      border: 1px solid var(--card-border-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      text-align: center;
+      transform: scale(0.9);
+    }
+
+    .service-card-fancy:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 20px 60px 0 rgba(31, 38, 135, 0.25);
+      border-color: var(--brantech-green);
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Icon Wrapper inside fancy cards */
+    .service-card-fancy .icon-wrapper {
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      animation: floating-icon 3s ease-in-out infinite;
+    }
+
+    /* Explicitly color the SVG icons */
+    .service-card-fancy .icon-wrapper svg {
+      stroke: var(--icon-color-primary);
+    }
+
+    .service-card-fancy:hover .icon-wrapper {
+      animation: none;
+    }
+
+    @keyframes floating-icon {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0px); }
+    }
+
+    /* New Blob Animations for background */
+    @keyframes blob {
+      0% { transform: translate(0px, 0px) scale(1); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+      33% { transform: translate(30px, -50px) scale(1.1); border-radius: 70% 30% 70% 30% / 30% 70% 30% 70%; }
+      66% { transform: translate(-20px, 20px) scale(0.9); border-radius: 40% 60% 60% 40% / 60% 60% 40% 40%; }
+      100% { transform: translate(0px, 0px) scale(1); border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    }
+
+    .animate-blob {
+      animation: blob 10s infinite cubic-bezier(0.6, 0.01, 0.35, 1);
+    }
+
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+
+    /* CTA */
+    .cta-box {
+      border-radius: 1.5rem;
+      background: var(--brantech-blue);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      transform: scale(0.9);
+    }
+
+    .cta-box:hover {
+      transform: scale(0.92);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--footer-dark);
+      color: #d1d5db;
+      padding-top: 3rem;
+    }
+
+    footer a {
+      color: #9ca3af;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    footer .footer-gradient-border {
+      height: 4px;
+      background: var(--gradient-glow);
+      margin-bottom: 2rem;
+      border-radius: 2px;
+    }
+
+    /* Section anchor offset */
+    section {
+      scroll-margin-top: 88px;
+    }
+    
+    /* Additional styles for existing elements */
+    .hero-slide {
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .service-card-fancy h3 {
+      color: #1a202c;
+    }
+    
+    .footer-logo {
+      filter: brightness(0) invert(1);
+    }
+    
+    .stats-section {
+      background: var(--gradient-glow);
+    }
+    
+    /* Floating animation for hero elements */
     .floating {
       animation: floating 3s ease-in-out infinite;
     }
+    
     @keyframes floating {
       0% { transform: translateY(0px); }
       50% { transform: translateY(-15px); }
       100% { transform: translateY(0px); }
     }
+    
+    /* Slide animation for hero slider */
     @keyframes slide {
       0%, 33% { transform: translateX(0); }
       34%, 66% { transform: translateX(-33.333%); }
       67%, 100% { transform: translateX(-66.666%); }
     }
+    
     .animate-slide {
       animation: slide 12s infinite;
     }
   </style>
 </head>
-<body class="bg-white text-gray-800 overflow-x-visible>
+<body class="bg-white text-gray-800 overflow-x-hidden">
+
   <!-- Navigation -->
-  <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-3">
-        <img src="images/Brantech_Business_Plan-removebg-preview.png" alt="Logo" class="h-10 w-10 rounded-full border-2 border-[color:var(--brantech-blue)]" />
+  <nav>
+     <div class="nav-container">
+      <div class="logo-container">
+        <img src="images/logo.jpeg" alt="BranTech Logo" class="h-10 w-10 rounded-full border-2 border-[color:var(--brantech-blue)]">
         <span class="text-xl font-bold bg-gradient-to-r from-[color:var(--brantech-blue)] to-[color:var(--brantech-green)] bg-clip-text text-transparent">BranTech</span>
       </div>
-      <div class="hidden md:flex space-x-8">
-        <a href="index.html" class="font-medium text-[color:var(--brantech-blue)] hover:text-[color:var(--brantech-green)] transition">Home</a>
-        <a href="about.html" class="font-medium text-gray-600 hover:text-[color:var(--brantech-green)] transition">About</a>
-        <a href="services.html" class="font-medium text-gray-600 hover:text-[color:var(--brantech-green)] transition">Services</a>
-        <a href="contacts.html" class="font-medium text-gray-600 hover:text-[color:var(--brantech-green)] transition">Contact</a>
+      
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contacts.html">Contact</a>
       </div>
-      <button class="md:hidden focus:outline-none">
-        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      
+      <button class="mobile-menu-button">
+        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
+    
+    <div class="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contacts.html">Contact</a>
+    </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="relative h-screen flex items-center justify-center text-white overflow-x-visible">
+  <section class="relative h-[75vh] flex items-center justify-center text-white overflow-hidden hero-gradient">
+    <!-- Floating shapes -->
+    <div class="hero-shape shape-1 animate-float-pulse-1 w-40 h-40 bg-[color:var(--brantech-blue)] rounded-full"></div>
+    <div class="hero-shape shape-2 animate-float-pulse-2 w-32 h-32 bg-[color:var(--brantech-green)] rounded-full"></div>
+    <div class="hero-shape shape-3 animate-float-pulse-3 w-36 h-36 bg-[color:var(--brantech-blue)] rounded-full"></div>
+    
     <div class="hero-slider absolute inset-0 w-[300%] h-full flex animate-slide">
-      <div class="hero-slide w-1/3 h-full bg-cover bg-center" style="background-image: linear-gradient(135deg, rgba(31, 58, 147, 0.8), rgba(71, 164, 71, 0.8)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
-      <div class="hero-slide w-1/3 h-full bg-cover bg-center" style="background-image: linear-gradient(135deg, rgba(31, 58, 147, 0.8), rgba(71, 164, 71, 0.8)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
-      <div class="hero-slide w-1/3 h-full bg-cover bg-center" style="background-image: linear-gradient(135deg, rgba(31, 58, 147, 0.8), rgba(71, 164, 71, 0.8)), url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+      <div class="hero-slide w-1/3" style="background-image: linear-gradient(135deg, rgba(31, 58, 147, 0.8), rgba(71, 164, 71, 0.8)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+      <div class="hero-slide w-1/3" style="background-image: linear-gradient(135deg, rgba(31, 58, 147, 0.8), rgba(71, 164, 71, 0.8)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+      <div class="hero-slide w-1/3" style="background-image: linear-gradient(135deg, rgba(31, 58, 147, 0.8), rgba(71, 164, 71, 0.8)), url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
     </div>
-    <div class="relative z-10 text-center px-6">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">BranTech Solutions</h1>
-      <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">We create cutting-edge technology solutions that transform businesses and drive growth in the digital age.</p>
-      <a href="#services" class="bg-white text-[color:var(--brantech-blue)] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg">Explore Our Work</a>
+    
+    <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 animate__animated animate__fadeInDown">
+        Innovative <span class="text-yellow-300">Technology</span> Solutions
+      </h1>
+      <p class="text-lg md:text-xl mb-6 opacity-90 max-w-3xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
+        We create cutting-edge digital solutions that transform businesses and drive growth in the modern age.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center animate__animated animate__fadeInUp animate__delay-2s">
+        <a href="#services" class="bg-white text-[color:var(--brantech-blue)] px-6 py-2.5 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg text-sm">
+          Our Services
+        </a>
+        <a href="contacts.html" class="bg-transparent border-2 border-white text-white px-6 py-2.5 rounded-full font-semibold hover:bg-white hover:text-[color:var(--brantech-blue)] transition text-sm">
+          Get Started
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- Clients Section -->
-  <section class="py-12 bg-gray-50">
+  <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6">
       <p class="text-center text-gray-500 mb-8">Trusted by innovative companies worldwide</p>
       <div class="flex flex-wrap justify-center gap-12 md:gap-24 opacity-60">
-        <img src="https://via.placeholder.com/120x40?text=Client+1" alt="Client Logo" class="h-8 object-contain">
-        <img src="https://via.placeholder.com/120x40?text=Client+2" alt="Client Logo" class="h-8 object-contain">
-        <img src="https://via.placeholder.com/120x40?text=Client+3" alt="Client Logo" class="h-8 object-contain">
-        <img src="https://via.placeholder.com/120x40?text=Client+4" alt="Client Logo" class="h-8 object-contain">
+        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-32 h-12"></div>
+        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-32 h-12"></div>
+        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-32 h-12"></div>
+        <div class="bg-gray-200 border-2 border-dashed rounded-xl w-32 h-12"></div>
       </div>
     </div>
   </section>
 
-  <!-- services.html -->
-  <section id="services" class="py-20 md:py-32 px-6 bg-white relative overflow-visible">
-    <div class="absolute inset-0 bg-gradient-to-br from-brantech-light via-white to-brantech-light opacity-70 -z-10"></div>
-    <div class="absolute top-1/4 left-0 w-40 h-40 bg-brantech-green rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob -z-10"></div>
-    <div class="absolute bottom-1/4 right-0 w-60 h-60 bg-brantech-blue rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000 -z-10"></div>
+  <!-- Services Section -->
+  <section id="services" class="py-20 px-6 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-[color:var(--brantech-light)] via-white to-[color:var(--brantech-light)] opacity-70 -z-10"></div>
+    <div class="absolute top-1/4 left-0 w-40 h-40 bg-[color:var(--brantech-green)] rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob -z-10"></div>
+    <div class="absolute bottom-1/4 right-0 w-60 h-60 bg-[color:var(--brantech-blue)] rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000 -z-10"></div>
 
     <div class="max-w-7xl mx-auto relative z-10">
-      <div class="text-center mb-16 animate__animated animate__fadeInDown animate__slow">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">Our Core <span class="text-brantech-green">Solutions</span></h2>
-        <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">Discover our premium suite of digital services, meticulously designed to drive growth, efficiency, and innovation for your enterprise.</p>
+      <div class="text-center mb-16">
+        <span class="inline-block px-4 py-1 bg-[color:var(--brantech-green)]/10 text-[color:var(--brantech-green)] rounded-full mb-4">What We Offer</span>
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Core <span class="text-[color:var(--brantech-blue)]">Services</span></h2>
+        <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+          Comprehensive digital solutions designed to elevate your business and exceed expectations.
+        </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-
+        <!-- Web Design & Development -->
         <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-blue text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <div class="icon-wrapper p-6 rounded-full bg-[color:var(--brantech-blue)] text-white mb-6 shadow-xl">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 4l-4 4 4 4" />
             </svg>
           </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">Web Design & Development</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Crafting bespoke, high-performance websites with intuitive UX/UI that elevate your brand and drive conversions.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Web Design & Development</h3>
+          <p class="text-gray-700 mb-4">
+            Bespoke, high-performance websites with intuitive UX/UI that elevate your brand and drive conversions.
+          </p>
+          <a href="services.html#web-development" class="text-[color:var(--brantech-blue)] font-semibold hover:text-[color:var(--brantech-green)] flex items-center group-hover:underline">
             Learn More
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -120,15 +521,18 @@
           </a>
         </div>
 
+        <!-- SEO Optimization -->
         <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-green text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <div class="icon-wrapper p-6 rounded-full bg-[color:var(--brantech-green)] text-white mb-6 shadow-xl">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
           </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">SEO Optimization</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Maximizing your online visibility and organic search rankings to connect you with more customers actively seeking your solutions.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">SEO Optimization</h3>
+          <p class="text-gray-700 mb-4">
+            Maximizing your online visibility and organic search rankings to connect with more customers.
+          </p>
+          <a href="services.html#seo" class="text-[color:var(--brantech-blue)] font-semibold hover:text-[color:var(--brantech-green)] flex items-center group-hover:underline">
             Learn More
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -136,115 +540,62 @@
           </a>
         </div>
 
+        <!-- Brand Strategy -->
         <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-blue text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">Email Marketing</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Building powerful email campaigns that nurture leads, drive repeat business, and strengthen customer relationships.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
-            Learn More
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-green text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <div class="icon-wrapper p-6 rounded-full bg-[color:var(--brantech-blue)] text-white mb-6 shadow-xl">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.558 23.558 0 0112 15c-3.185 0-6.279-.64-9-1.745M15 12a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">Brand Strategy</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Crafting compelling brand narratives and visual identities that resonate deeply with your target audience.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Brand Strategy</h3>
+          <p class="text-gray-700 mb-4">
+            Crafting compelling brand narratives and visual identities that resonate with your audience.
+          </p>
+          <a href="services.html#branding" class="text-[color:var(--brantech-blue)] font-semibold hover:text-[color:var(--brantech-green)] flex items-center group-hover:underline">
             Learn More
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </a>
         </div>
-
-        <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-blue text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L20 20m-6-6l2-2m-3-6H9m2 0H7m4 0h-1m4 0h-1m4 0h-1m4 0h-1" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">Graphic Design</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Designing stunning visual assets, from impactful logos to engaging marketing collateral, that leave a lasting impression.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
-            Learn More
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-green text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">Content Creation</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Producing high-quality, engaging content—from captivating articles to dynamic videos—that educates, entertains, and converts.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
-            Learn More
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
-        <div class="service-card-fancy group">
-          <div class="icon-wrapper p-6 rounded-full bg-brantech-blue text-white mb-6 shadow-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 md:h-16 md:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 9v-3a2 2 0 00-2-2H6a2 2 0 00-2 2v3m14 0a2 2 0 012 2v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5a2 2 0 012-2m0 0h12" />
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">Social Media Advertising</h3>
-          <p class="text-gray-700 leading-relaxed mb-6">Strategically targeting audiences on social platforms to boost brand awareness, generate leads, and drive conversions.</p>
-          <a href="#" class="text-brantech-blue font-semibold hover:text-brantech-green transition-colors flex items-center group-hover:underline">
-            Learn More
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-
+      </div>
+      
+      <div class="text-center mt-16">
+        <a href="services.html" class="inline-flex items-center bg-[color:var(--brantech-blue)] text-white px-8 py-3 rounded-full font-semibold hover:bg-[color:var(--brantech-blue)]/90 transition shadow-lg">
+          View All Services
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- Stats Section -->
-  <section class="py-20 px-6 bg-[color:var(--brantech-blue)] text-white">
+  <section class="py-20 px-6 stats-section text-white">
     <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8 text-center">
       <div class="p-6">
         <div class="text-4xl font-bold mb-2">150+</div>
-        <div class="text-gray-300">Projects Completed</div>
+        <div class="text-gray-200">Projects Completed</div>
       </div>
       <div class="p-6">
         <div class="text-4xl font-bold mb-2">40+</div>
-        <div class="text-gray-300">Happy Clients</div>
+        <div class="text-gray-200">Happy Clients</div>
       </div>
       <div class="p-6">
         <div class="text-4xl font-bold mb-2">12</div>
-        <div class="text-gray-300">Industry Awards</div>
+        <div class="text-gray-200">Industry Awards</div>
       </div>
       <div class="p-6">
         <div class="text-4xl font-bold mb-2">24/7</div>
-        <div class="text-gray-300">Support Available</div>
+        <div class="text-gray-200">Support Available</div>
       </div>
     </div>
   </section>
 
   <!-- CTA Section -->
   <section class="py-20 px-6 bg-white">
-    <div class="max-w-4xl mx-auto bg-gradient-to-r from-[color:var(--brantech-blue)] to-[color:var(--brantech-green)] rounded-2xl p-12 text-center text-white shadow-xl">
+    <div class="max-w-4xl mx-auto cta-box rounded-2xl p-12 text-center text-white shadow-xl">
       <h2 class="text-3xl font-bold mb-4">Ready to Transform Your Business?</h2>
       <p class="text-lg mb-8 opacity-90">Let's discuss how we can help you achieve your goals with technology.</p>
       <a href="contacts.html" class="inline-block bg-white text-[color:var(--brantech-blue)] px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition shadow-lg">Get in Touch</a>
@@ -252,97 +603,76 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-12 px-6">
+  <footer class="py-12 px-6">
     <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
       <div>
         <div class="flex items-center space-x-3 mb-4">
-          <img src="/mnt/data/WhatsApp Image 2025-06-19 at 11.30.29.jpeg" alt="Logo" class="h-10 w-10 rounded-full" />
-          <span class="text-xl font-bold">BranTech</span>
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='40' height='40'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23ffffff'/%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z' fill='%231f3a93'/%3E%3C/svg%3E" alt="BranTech Logo" class="h-10 w-10">
+          <span class="text-xl font-bold text-white">BranTech</span>
         </div>
         <p class="text-gray-400">Innovative technology solutions for modern businesses.</p>
       </div>
       <div>
-        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+        <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
         <ul class="space-y-2">
           <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
           <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
           <li><a href="services.html" class="text-gray-400 hover:text-white transition">Services</a></li>
-          <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+          <li><a href="contacts.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="text-lg font-semibold mb-4">Services</h4>
+        <h4 class="text-lg font-semibold text-white mb-4">Services</h4>
         <ul class="space-y-2">
-        <li><a href="#" class="text-gray-400 hover:text-white transition">Web Design & Development</a></li>
-        <li><a href="#" class="text-gray-400 hover:text-white transition">SEO Optimization</a></li>
-        <li><a href="#" class="text-gray-400 hover:text-white transition">Brand Strategy</a></li>
-        <li><a href="#" class="text-gray-400 hover:text-white transition">Email Marketing</a></li>
-        <li><a href="#" class="text-gray-400 hover:text-white transition">Content Creation</a></li>
-        <li><a href="#" class="text-gray-400 hover:text-white transition">Graphic Design</a></li>
-        <li><a href="#" class="text-gray-400 hover:text-white transition">Social Media Advertising</a></li>
+          <li><a href="services.html#web-development" class="text-gray-400 hover:text-white transition">Web Development</a></li>
+          <li><a href="services.html#seo" class="text-gray-400 hover:text-white transition">SEO Optimization</a></li>
+          <li><a href="services.html#branding" class="text-gray-400 hover:text-white transition">Brand Strategy</a></li>
+          <li><a href="services.html" class="text-gray-400 hover:text-white transition">View All Services</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="text-lg font-semibold mb-4">Contact</h4>
+        <h4 class="text-lg font-semibold text-white mb-4">Contact</h4>
         <address class="text-gray-400 not-italic">
-          <p></p>
-          <p></p>
+          <p>Nairobi, Kenya</p>
           <p class="mt-2">solutionsbrantech@gmail.com</p>
-          <p>0704894220</p>
+          <p>+254 704 894 220</p>
         </address>
       </div>
     </div>
-    <div class="max-w-7xl mx-auto pt-8 mt-8 border-t border-gray-800 text-center text-gray-400">
+
+    <div class="max-w-7xl mx-auto pt-4 text-center text-gray-400">
       <p>© 2025 BranTech Solutions. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script>
-// BranTech script with tab and animation logic
-document.addEventListener('DOMContentLoaded', function() {
-  // Tab switching
-  const tabButtons = document.querySelectorAll('.tab-btn');
-  const tabContents = document.querySelectorAll('.tab-content');
-  
-  if (tabButtons.length > 0) {
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        tabButtons.forEach(btn => btn.classList.remove('tab-active'));
-        tabContents.forEach(content => content.classList.add('hidden'));
-        
-        button.classList.add('tab-active');
-        const tabId = button.getAttribute('data-tab') + '-tab';
-        document.getElementById(tabId).classList.remove('hidden');
+    // Mobile menu toggle
+    document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+      const menu = document.querySelector('.mobile-menu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.mobile-menu').style.display = 'none';
       });
     });
-  }
 
-  // Animation observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
-      }
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
     });
-  }, { threshold: 0.1 });
-
-  // 🔧 Fix: Target your actual class in HTML
-  document.querySelectorAll('#services .service-card-fancy').forEach(card => {
-    observer.observe(card);
-  });
-
-  // Mobile menu toggle
-  const mobileMenuButton = document.querySelector('.mobile-menu-button');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
-});
-</script>
-
-    
+  </script>
 </body>
 </html>

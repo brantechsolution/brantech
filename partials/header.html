@@ -1,0 +1,27 @@
+<!-- partials/header.html -->
+<nav class="fixed w-full z-50">
+  <div class="nav-container mx-auto px-6 py-4">
+    <div class="logo-container">
+      <img src="images/Brantech_Business_Plan-removebg-preview.png" alt="Logo" class="h-10 w-10 rounded-full border-2 border-[color:var(--brantech-blue)]" />
+      <span class="text-xl font-bold bg-gradient-to-r from-[color:var(--brantech-blue)] to-[color:var(--brantech-green)] bg-clip-text text-transparent">BranTech</span>
+    </div>
+    <div class="nav-links hidden md:flex">
+      <a href="index.html" class="font-medium text-[color:var(--brantech-blue)] hover:text-[color:var(--brantech-green)]">Home</a>
+      <a href="about.html" class="font-medium text-gray-600 hover:text-[color:var(--brantech-green)]">About</a>
+      <a href="services.html" class="font-medium text-gray-600 hover:text-[color:var(--brantech-green)]">Services</a>
+      <a href="contacts.html" class="font-medium text-gray-600 hover:text-[color:var(--brantech-green)]">Contact</a>
+    </div>
+    <button class="mobile-menu-button md:hidden focus:outline-none">
+      <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu hidden md:hidden bg-white py-2 px-6 shadow-lg">
+    <a href="index.html" class="block py-2 text-gray-600 hover:text-[color:var(--brantech-green)]">Home</a>
+    <a href="about.html" class="block py-2 text-gray-600 hover:text-[color:var(--brantech-green)]">About</a>
+    <a href="services.html" class="block py-2 text-gray-600 hover:text-[color:var(--brantech-green)]">Services</a>
+    <a href="contacts.html" class="block py-2 text-gray-600 hover:text-[color:var(--brantech-green)]">Contact</a>
+  </div>
+</nav>
